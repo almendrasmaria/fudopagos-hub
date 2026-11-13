@@ -6,7 +6,7 @@ import {
   Check,
   ArrowLeft,
   Info,
-  MessageSquareText,
+  ChevronDown,
 } from "lucide-react";
 import { Article } from "@/types";
 
@@ -17,6 +17,7 @@ interface ProtocolViewProps {
 
 export function ProtocolView({ article, onBackMobile }: ProtocolViewProps) {
   const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
+  const [showPreview, setShowPreview] = useState(false);
 
   if (!article) {
     return (
@@ -145,60 +146,62 @@ export function ProtocolView({ article, onBackMobile }: ProtocolViewProps) {
                 dangerouslySetInnerHTML={{ __html: article.solutionHtml }}
               />
             )}
-          </div>
-        )}
 
-        {/* Section 3: Mensaje para el Cliente (solo si corresponde) */}
-        {clientMessage && (
-          <div className="w-full bg-white rounded-2xl border border-emerald-200/80 p-5 md:p-6 shadow-2xs">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-100/80">
-              <div className="flex items-center gap-2.5">
-                <MessageSquareText className="w-4 h-4 text-emerald-600" />
-                <h2 className="text-xs font-bold text-slate-900 tracking-wider uppercase">
-                  MENSAJE PARA EL CLIENTE
-                </h2>
-              </div>
-              {article.clientResponse.isHomologated && (
-                <div className="flex items-center gap-1.5 text-xs font-medium text-emerald-600">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span>Listo para enviar</span>
+            {/* Barra integrada para copiar respuesta adaptada al cliente */}
+            {clientMessage && (
+              <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handleCopyResponse}
+                      aria-label="Copiar mensaje para el cliente"
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-xs active:scale-98 ${
+                        copied
+                          ? "bg-emerald-600 text-white"
+                          : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                      }`}
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-3.5 h-3.5" />
+                          <span>¡Mensaje copiado!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Copiar mensaje para el cliente</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setShowPreview((v) => !v)}
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-medium text-slate-500 hover:text-slate-800 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                    >
+                      <span>{showPreview ? "Ocultar texto" : "Ver texto adaptado"}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          showPreview ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  <span className="text-[11px] font-mono text-slate-400">
+                    {characterCount} caracteres
+                  </span>
                 </div>
-              )}
-            </div>
 
-            <div className="mt-4 bg-slate-50/80 border border-slate-200/70 rounded-xl p-4 md:p-5 w-full">
-              <p className="text-xs md:text-sm text-slate-800 leading-relaxed font-normal whitespace-pre-line">
-                {clientMessage}
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-100">
-              <span className="text-xs font-mono text-slate-400">
-                {characterCount} car.
-              </span>
-              <button
-                type="button"
-                onClick={handleCopyResponse}
-                aria-label="Copiar mensaje"
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-2xs active:scale-98 ${
-                  copied
-                    ? "bg-emerald-600 text-white"
-                    : "bg-emerald-600 hover:bg-emerald-700 text-white"
-                }`}
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>¡Mensaje copiado!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copiar mensaje</span>
-                  </>
+                {/* Previsualización colapsable opcional */}
+                {showPreview && (
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700 leading-relaxed whitespace-pre-line mt-1">
+                    {clientMessage}
+                  </div>
                 )}
-              </button>
-            </div>
+              </div>
+            )}
           </div>
         )}
 

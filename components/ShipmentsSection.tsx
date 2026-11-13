@@ -124,10 +124,6 @@ export function ShipmentsSection() {
                     </li>
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-slate-900 shrink-0 mt-0.5" />
-                      <span><strong>Caja:</strong> Caja de empaque (excepto M90 que trae propia).</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-slate-900 shrink-0 mt-0.5" />
                       <span><strong>SIM:</strong> Chip Entel para Uroba nuevas; SIM Entel M90 para M90.</span>
                     </li>
                     <li className="flex items-start gap-1.5">

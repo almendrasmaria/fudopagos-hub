@@ -688,8 +688,8 @@ export const initialArticles: Article[] = [
     "solutionHtml": "<p>Verificar en <strong>Fudo Pagos &gt; Cobros</strong> utilizando el <strong>monto exacto</strong> como filtro:</p><ol><li><strong>2 transacciones aprobadas:</strong> Se cobran ambas y se abonan al comercio el día hábil siguiente. El comercio debe devolver una al cliente (directo desde terminal si es reciente o mediante devolución administrativa).</li><li><strong>1 aprobada + 1 rechazada / no aparece:</strong> Solo se abona la aprobada al comercio. El banco emisor del cliente revierte automáticamente la retención en un plazo de <strong>hasta 3 días hábiles</strong>. Si no ocurre dentro de ese plazo, escalar a <code>#contact-fudopagos</code>.</li><li><strong>2 rechazadas / no aparecen:</strong> No hubo un cobro efectivo. Corresponde realizar nuevamente el pago en la terminal.</li></ol>",
     "notesHtml": "",
     "clientResponse": {
-      "text": "Entendemos la preocupación con el cobro duplicado. Revisando las operaciones en el sistema:\n\n📌 Si ambas compras figuran aprobadas:\n• Ambas se liquidarán en tu cuenta al día hábil siguiente y deberás realizar la devolución de una de ellas al cliente.\n\n📌 Si solo figura 1 aprobada y la otra rechazada:\n• Solo se te abonará la aprobada. La otra retención es temporal del banco del comensal y se libera automáticamente en un plazo de hasta 3 días hábiles.\n\n📌 Si ambas figuran rechazadas o no aparecen:\n• No hubo débito efectivo y es necesario volver a pasar el cobro.\n\n✅ Si querés que validemos una operación puntual, compartinos el monto exacto y los últimos 4 dígitos de la tarjeta.",
-      "isHomologated": true
+      "text": "",
+      "isHomologated": false
     },
     "externalLink": {
       "title": "Base de Conocimiento Fudo",
