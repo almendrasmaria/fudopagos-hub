@@ -16,13 +16,9 @@ export function NewArticleModal({
   onAddArticle,
 }: NewArticleModalProps) {
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("SII Facturación");
+  const [category, setCategory] = useState("Gestión Común");
   const [description, setDescription] = useState("");
-  const [readTime, setReadTime] = useState("3 min");
   const [responseText, setResponseText] = useState("");
-  const [verification1, setVerification1] = useState("");
-  const [verification2, setVerification2] = useState("");
-  const [externalUrl, setExternalUrl] = useState("");
 
   if (!isOpen) return null;
 
@@ -34,38 +30,27 @@ export function NewArticleModal({
       id: `kb-custom-${Date.now()}`,
       number: String(Math.floor(Math.random() * 90) + 10),
       category,
-      readTime,
+      readTime: "2 min",
       title,
       description: description || "Sin descripción proporcionada.",
-      link: externalUrl || "soporte.fudo.lat/kb/nuevo",
+      link: "soporte.fudo.la",
       updatedStatus: "Creado recién",
       code: `KB-${category.slice(0, 3).toUpperCase()}-${Math.floor(Math.random() * 90 + 10)}`,
       subtitle: `Protocolo oficial para agentes de soporte en ${category}.`,
       verificationSteps: [
         {
           id: `step-1`,
-          text: verification1 || "Verificar estado del cliente en Dash Operaciones.",
+          text: "Verificar estado del cliente en Dash Operaciones.",
           completed: false,
         },
-        ...(verification2
-          ? [
-              {
-                id: `step-2`,
-                text: verification2,
-                completed: false,
-              },
-            ]
-          : []),
       ],
       clientResponse: {
-        text:
-          responseText ||
-          `¡Hola! Hemos revisado tu consulta sobre ${title}. Te sugerimos seguir los pasos indicados en la documentación o contactar con el equipo especializado.`,
-        isHomologated: true,
+        text: responseText.trim(),
+        isHomologated: Boolean(responseText.trim()),
       },
       externalLink: {
-        title: externalUrl ? `Portal ${category}` : "Base de Conocimiento",
-        url: externalUrl || "https://soporte.fudo.lat",
+        title: "Base de Conocimiento",
+        url: "https://soporte.fudo.la",
         code: "DOC-NEW",
       },
     };
@@ -115,34 +100,24 @@ export function NewArticleModal({
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block font-medium text-slate-700 mb-1">
-                Categoría
-              </label>
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900"
-              >
-                <option value="SII Facturación">SII Facturación</option>
-                <option value="Conectividad POS">Conectividad POS</option>
-                <option value="Cobros Fallidos">Cobros Fallidos</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block font-medium text-slate-700 mb-1">
-                Tiempo de lectura
-              </label>
-              <input
-                type="text"
-                value={readTime}
-                onChange={(e) => setReadTime(e.target.value)}
-                placeholder="3 min"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900"
-              />
-            </div>
+          <div>
+            <label className="block font-medium text-slate-700 mb-1">
+              Categoría
+            </label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900"
+            >
+              <option value="Gestión Común">Gestión Común</option>
+              <option value="Gestión Comercial">Gestión Comercial</option>
+              <option value="SII - Facturación">SII - Facturación</option>
+              <option value="Reclamo de transacciones">Reclamo de transacciones</option>
+              <option value="Error al Cobrar">Error al Cobrar</option>
+              <option value="Error Conectividad">Error Conectividad</option>
+              <option value="Error Dispositivo">Error Dispositivo</option>
+              <option value="Impresora Integrada">Impresora Integrada</option>
+            </select>
           </div>
 
           <div>

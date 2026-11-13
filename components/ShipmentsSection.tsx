@@ -289,16 +289,6 @@ export function ShipmentsSection() {
                     Cualquier consulta sobre estados de envío o recambio debe ser derivada inmediatamente con el <strong>equipo local de México</strong> vía canal interno o ticket asignado.
                   </p>
                 </div>
-
-                {/* Client communication */}
-                <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-1">
-                    3. Respuesta al cliente:
-                  </span>
-                  <p className="text-slate-600 leading-relaxed text-[11px] italic">
-                    "Hola! Estamos coordinando el estado de tu terminal con el equipo de logística de México. Te estaremos contactando en breve con la confirmación."
-                  </p>
-                </div>
               </div>
             </div>
 

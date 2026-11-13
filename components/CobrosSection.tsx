@@ -44,7 +44,7 @@ function Section({
       >
         {/* Number circle */}
         <div
-          className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold transition-all ${isOpen
+          className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 text-sm font-bold transition-all ${isOpen
             ? "bg-slate-900 text-white"
             : "border-2 border-slate-300 text-slate-500"
             }`}
@@ -59,7 +59,7 @@ function Section({
         </div>
 
         {/* Badge + chevron */}
-        <div className="flex items-center gap-3 flex-shrink-0">
+        <div className="flex items-center gap-3 shrink-0">
           {badge && (
             <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${badgeStyle}`}>
               {badge}
@@ -101,7 +101,7 @@ function LevelCard({
   return (
     <div className={`flex gap-4 p-4 rounded-2xl border ${bg}`}>
       {/* Colored dot */}
-      <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 mt-1 ${dotColor}`} />
+      <span className={`w-2.5 h-2.5 rounded-full shrink-0 mt-1 ${dotColor}`} />
       {/* Content */}
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -113,20 +113,57 @@ function LevelCard({
         <p className="text-xs text-slate-600 leading-relaxed">{desc}</p>
       </div>
       {/* Number */}
-      <span className="text-sm font-bold text-slate-200 flex-shrink-0">{num}</span>
+      <span className="text-sm font-bold text-slate-200 shrink-0">{num}</span>
     </div>
+  );
+}
+
+/* ─── Country Flag Icons (SVG nítido para Windows / cualquier OS) ─── */
+function ChileFlag() {
+  return (
+    <svg viewBox="0 0 32 24" className="w-6 h-4.5 rounded-[3px] shadow-xs overflow-hidden">
+      <rect width="32" height="12" fill="#FFFFFF" />
+      <rect y="12" width="32" height="12" fill="#D52B1E" />
+      <rect width="12" height="12" fill="#0039A6" />
+      <polygon
+        points="6,2.5 7.1,5.8 10.5,5.8 7.8,7.8 8.8,11 6,9 3.2,11 4.2,7.8 1.5,5.8 4.9,5.8"
+        fill="#FFFFFF"
+      />
+    </svg>
+  );
+}
+
+function ArgentinaFlag() {
+  return (
+    <svg viewBox="0 0 32 24" className="w-6 h-4.5 rounded-[3px] shadow-xs overflow-hidden">
+      <rect width="32" height="8" fill="#75AADB" />
+      <rect y="8" width="32" height="8" fill="#FFFFFF" />
+      <rect y="16" width="32" height="8" fill="#75AADB" />
+      <circle cx="16" cy="12" r="2.8" fill="#F6B40E" stroke="#855B14" strokeWidth="0.4" />
+    </svg>
+  );
+}
+
+function MexicoFlag() {
+  return (
+    <svg viewBox="0 0 32 24" className="w-6 h-4.5 rounded-[3px] shadow-xs overflow-hidden">
+      <rect width="10.66" height="24" fill="#006847" />
+      <rect x="10.66" width="10.68" height="24" fill="#FFFFFF" />
+      <rect x="21.34" width="10.66" height="24" fill="#CE1126" />
+      <circle cx="16" cy="12" r="2" fill="#8B5A2B" opacity="0.8" />
+    </svg>
   );
 }
 
 /* ─── Country link card ─── */
 function CountryLink({
   href,
-  flag,
+  country,
   label,
   note,
 }: {
   href: string;
-  flag: string;
+  country: "CL" | "AR" | "MX";
   label: string;
   note: string;
 }) {
@@ -137,14 +174,16 @@ function CountryLink({
       rel="noopener noreferrer"
       className="flex items-center gap-4 p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-white hover:border-slate-200 hover:shadow-sm transition-all group"
     >
-      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0 shadow-sm text-xl">
-        {flag}
+      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/90 flex items-center justify-center shrink-0 shadow-xs">
+        {country === "CL" && <ChileFlag />}
+        {country === "AR" && <ArgentinaFlag />}
+        {country === "MX" && <MexicoFlag />}
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-sm font-semibold text-slate-900">{label}</p>
         <p className="text-xs text-slate-400 mt-0.5 truncate">{note}</p>
       </div>
-      <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 transition-colors flex-shrink-0" />
+      <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 transition-colors shrink-0" />
     </a>
   );
 }
@@ -153,7 +192,7 @@ function CountryLink({
 function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
   return (
     <div className="flex gap-4">
-      <div className="flex flex-col items-center gap-1 flex-shrink-0">
+      <div className="flex flex-col items-center gap-1 shrink-0">
         <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">
           {n}
         </div>
@@ -222,7 +261,7 @@ export function CobrosSection() {
                   {node.label}
                 </span>
                 {i < arr.length - 1 && (
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 )}
               </React.Fragment>
             ))}
@@ -280,19 +319,19 @@ export function CobrosSection() {
             <div className="space-y-2">
               <CountryLink
                 href="https://backend-mpos-fudo-cl.prd.geopagos.io/login"
-                flag="🇨🇱"
+                country="CL"
                 label="Backoffice Geopagos — Chile"
                 note="backend-mpos-fudo-cl.prd.geopagos.io"
               />
               <CountryLink
                 href="https://backend-mpos-fudo-ar.prd.geopagos.io/login"
-                flag="🇦🇷"
+                country="AR"
                 label="Backoffice Geopagos — Argentina"
                 note="backend-mpos-fudo-ar.prd.geopagos.io"
               />
               <CountryLink
                 href="https://idp.prd.geopagos.io/auth/realms/c7642ba3-cba4-51a0-a8d5-73fa03743516/protocol/openid-connect/auth?scope=openid&state=a61b1855046a15dfbb1539bc4ccb65d1&response_type=code&approval_prompt=auto&redirect_uri=http%3A%2F%2Fbackend-mpos-fudo-mx.prd.geopagos.io%2Fkeycloak%2Fredirect&client_id=87597b8d-47b5-50fb-b4c2-9bb5ac79f402"
-                flag="🇲🇽"
+                country="MX"
                 label="Backoffice Geopagos — México"
                 note="backend-mpos-fudo-mx.prd.geopagos.io"
               />
@@ -361,8 +400,8 @@ export function CobrosSection() {
           {/* Portal Klap + Klapeador */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0 text-xl shadow-xs">
-                🇨🇱
+              <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-xs">
+                <ChileFlag />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-slate-900">Portal Klap</p>
@@ -372,14 +411,14 @@ export function CobrosSection() {
                 href="https://www.klap.cl/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-200 text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors flex-shrink-0"
+                className="flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-200 text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors shrink-0"
               >
                 Abrir <ExternalLink className="w-3 h-3" />
               </a>
             </div>
 
             <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 shadow-md">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
                 <Globe className="w-5 h-5 text-white" />
               </div>
               <div className="flex-1 min-w-0">
@@ -390,7 +429,7 @@ export function CobrosSection() {
                 href="https://menu-herramientas-cl.lovable.app/klapeador"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-2 bg-white text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors flex-shrink-0"
+                className="flex items-center gap-1.5 px-4 py-2 bg-white text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors shrink-0"
               >
                 Abrir <ExternalLink className="w-3 h-3" />
               </a>
@@ -425,14 +464,14 @@ export function CobrosSection() {
               <Step n={3} title="Interpretar el resultado">
                 <div className="space-y-2">
                   <div className="flex items-start gap-2.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold text-emerald-800">Venta débito/crédito aprobada</p>
                       <p className="text-emerald-700">Cobro procesado y liquidado correctamente.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2.5 p-3 rounded-xl bg-red-50 border border-red-200">
-                    <XCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                    <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold text-red-800">Anulación</p>
                       <p className="text-red-700">La operación fue reversada o rechazada.</p>
@@ -458,7 +497,7 @@ export function CobrosSection() {
         >
           {/* Warning */}
           <div className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50 border border-amber-200">
-            <ShieldCheck className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <ShieldCheck className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
             <p className="text-xs text-amber-800 leading-relaxed">
               Seguí este orden exacto <strong>solo si confirmaste en Klap que la venta está aprobada</strong> y
               corresponde devolver el dinero (cobro duplicado, error en medio de pago, etc.).
@@ -511,25 +550,42 @@ export function CobrosSection() {
                     key={item}
                     className="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-100"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
                     <span className="text-xs text-slate-600">{item}</span>
                   </div>
                 ))}
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-xl bg-blue-50 border border-blue-200">
-                <Bell className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                <Bell className="w-4 h-4 text-blue-500 shrink-0" />
                 <p className="text-blue-700">
                   Verificá notificaciones activadas para{" "}
                   <strong>scoltellini@fu.do</strong> y <strong>pbianco@fu.do</strong>.
                 </p>
               </div>
-              <div className="flex items-center justify-between p-3 rounded-xl border border-dashed border-slate-300 bg-slate-50 text-slate-400">
-                <div className="flex items-center gap-2">
-                  <FileSpreadsheet className="w-4 h-4" />
-                  <span>Planilla — Registro de Casos <em className="text-slate-400">(link pendiente)</em></span>
+              <a
+                href="https://docs.google.com/spreadsheets/d/1wNWA8XXVz28WGiQn4y0dx1rZAdI_kFk30CCktxrpTyk/edit?gid=868786926#gid=868786926"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/70 hover:bg-emerald-50 hover:border-emerald-300 text-emerald-900 transition-all group"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <FileSpreadsheet className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold block text-slate-900 group-hover:text-emerald-900">
+                      Planilla — Registro de Casos (Reclamos por Transacción Mal Procesada)
+                    </span>
+                    <span className="text-[11px] text-slate-500">
+                      Formulario verde CARGAR NUEVO CASO · Google Sheets
+                    </span>
+                  </div>
                 </div>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </div>
+                <div className="flex items-center gap-1 text-xs font-semibold text-emerald-700 group-hover:text-emerald-900 shrink-0">
+                  <span>Abrir planilla</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </div>
+              </a>
             </Step>
           </div>
         </Section>
@@ -548,7 +604,7 @@ export function CobrosSection() {
         >
           {/* Acceso directo a Dash Payouts */}
           <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 shadow-md">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
               <Landmark className="w-5 h-5 text-white" />
             </div>
             <div className="flex-1 min-w-0">
@@ -561,7 +617,7 @@ export function CobrosSection() {
               href="https://dash.fu.do/fudo-payments"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-4 py-2 bg-white text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors flex-shrink-0"
+              className="flex items-center gap-1.5 px-4 py-2 bg-white text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition-colors shrink-0"
             >
               Abrir <ExternalLink className="w-3 h-3" />
             </a>
@@ -638,7 +694,7 @@ export function CobrosSection() {
           </div>
 
           {/* Error más común en Chile */}
-          <div className="rounded-2xl border border-red-200/80 bg-gradient-to-br from-red-50/70 to-amber-50/40 p-5 space-y-4">
+          <div className="rounded-2xl border border-red-200/80 bg-linear-to-br from-red-50/70 to-amber-50/40 p-5 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span className="text-base">🇨🇱</span>
@@ -685,7 +741,7 @@ export function CobrosSection() {
 
               <div className="p-3.5 rounded-xl bg-emerald-50/90 border border-emerald-200/80 space-y-1.5">
                 <div className="flex items-center gap-2 font-bold text-emerald-900">
-                  <RefreshCw className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <RefreshCw className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>¿Qué pasa con el dinero y cómo se soluciona?</span>
                 </div>
                 <ul className="space-y-1 text-emerald-800 pl-5 list-disc">
