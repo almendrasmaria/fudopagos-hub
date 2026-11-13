@@ -28,6 +28,8 @@ export interface Article {
   updatedStatus: string;
   code: string;
   subtitle: string;
+  badgeLabel?: string;
+  detailSectionTitle?: string;
   verificationSteps: VerificationStep[];
   problemHtml?: string;
   reasonHtml?: string;

@@ -8,6 +8,7 @@ import { ProtocolView } from "@/components/ProtocolView";
 import { ShipmentsSection } from "@/components/ShipmentsSection";
 import { CobrosSection } from "@/components/CobrosSection";
 import { NewArticleModal } from "@/components/NewArticleModal";
+import { EscalationModal } from "@/components/EscalationModal";
 import { initialArticles } from "@/data/mockArticles";
 import { Article } from "@/types";
 
@@ -20,6 +21,7 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileView, setMobileView] = useState<"list" | "detail">("detail");
   const [isNewArticleOpen, setIsNewArticleOpen] = useState(false);
+  const [isEscalationOpen, setIsEscalationOpen] = useState(false);
 
   const handleSelectArticle = (article: Article) => {
     setSelectedArticle(article);
@@ -66,6 +68,7 @@ export default function Home() {
         <Header
           currentSectionTitle={getSectionTitle()}
           onNewArticle={() => setIsNewArticleOpen(true)}
+          onOpenEscalation={() => setIsEscalationOpen(true)}
           onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
         />
 
@@ -128,6 +131,12 @@ export default function Home() {
         isOpen={isNewArticleOpen}
         onClose={() => setIsNewArticleOpen(false)}
         onAddArticle={handleAddArticle}
+      />
+
+      {/* Escalation Checklist Modal */}
+      <EscalationModal
+        isOpen={isEscalationOpen}
+        onClose={() => setIsEscalationOpen(false)}
       />
     </div>
   );

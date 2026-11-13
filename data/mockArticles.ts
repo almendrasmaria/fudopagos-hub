@@ -26,7 +26,7 @@ export const initialArticles: Article[] = [
     ],
     "problemHtml": "",
     "reasonHtml": "",
-    "solutionHtml": "<p>El cliente puede consultar y configurar en el portal del SII <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.sii.cl/servicios_online/3532-.html\">https://www.sii.cl/servicios_online/3532-.html</a> (Servicios Online &gt; Boleta de ventas y servicios electrónica &gt; Declaración modelo de emisión) el modelo de emisión activo, que será alguno de los siguientes:</p><ol><li><strong>1. Siempre emito Boleta de Ventas y Servicios Electrónica aún cuando reciba un pago electrónico:</strong> El voucher que emite la terminal <strong>NO</strong> será válido como boleta. El comercio deberá emitir la boleta de forma manual.</li><li><strong>2. No emito Boleta de Ventas y Servicios cuando recibo un pago electrónico:</strong> El voucher de la terminal de Fudo Pagos opera de forma automática como boleta válida ante el SII. No deberá emitirse boleta de forma manual.</li></ol><p><img src=\"https://fudo-solution-shelf.lovable.app/api/public/img/c3ea991c-1717-4421-a0ff-ae99e16fb37b.png\" alt=\"Declaración modelo de emisión SII\" /></p><p>Además, existe una opción similar configurable dentro de Fudo, esta sección no tiene efecto alguno sobre la emisión, pero acompaña a lo que se seleccione en el SII.</p><p><img src=\"https://fudo-solution-shelf.lovable.app/api/public/img/e14b6f7b-0cbc-4f57-80eb-bd6bf2077a2b.png\" alt=\"Configuración de emisión de boleta en Fudo\" /></p><p>La <strong>primera opción</strong>, que acompaña al primer modelo en el SII, habilita el botón de <em>\"Emitir boleta\"</em> al cerrar una venta con FudoPagos en la terminal.</p><p>La <strong>segunda opción</strong>, quita este botón, ya que va de acuerdo al segundo modelo de emisión en el SII, en el cual no se necesita y es un error emitir boleta, ya que se duplicaría la facturación.</p>",
+    "solutionHtml": "<p>El cliente puede consultar y configurar en el portal del SII <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.sii.cl/servicios_online/3532-.html\">https://www.sii.cl/servicios_online/3532-.html</a> (Servicios Online &gt; Boleta de ventas y servicios electrónica &gt; Declaración modelo de emisión) el modelo de emisión activo, que será alguno de los siguientes:</p><ol><li><strong>Siempre emito Boleta de Ventas y Servicios Electrónica aún cuando reciba un pago electrónico:</strong> El voucher que emite la terminal <strong>NO</strong> será válido como boleta. El comercio deberá emitir la boleta de forma manual.</li><li><strong>No emito Boleta de Ventas y Servicios cuando recibo un pago electrónico:</strong> El voucher de la terminal de Fudo Pagos opera de forma automática como boleta válida ante el SII. No deberá emitirse boleta de forma manual.</li></ol><p><img src=\"https://fudo-solution-shelf.lovable.app/api/public/img/c3ea991c-1717-4421-a0ff-ae99e16fb37b.png\" alt=\"Declaración modelo de emisión SII\" /></p><p>Además, existe una opción similar configurable dentro de Fudo, esta sección no tiene efecto alguno sobre la emisión, pero acompaña a lo que se seleccione en el SII.</p><p><img src=\"https://fudo-solution-shelf.lovable.app/api/public/img/e14b6f7b-0cbc-4f57-80eb-bd6bf2077a2b.png\" alt=\"Configuración de emisión de boleta en Fudo\" /></p><p>La <strong>primera opción</strong>, que acompaña al primer modelo en el SII, habilita el botón de <em>\"Emitir boleta\"</em> al cerrar una venta con FudoPagos en la terminal.</p><p>La <strong>segunda opción</strong>, quita este botón, ya que va de acuerdo al segundo modelo de emisión en el SII, en el cual no se necesita y es un error emitir boleta, ya que se duplicaría la facturación.</p>",
     "notesHtml": "",
     "clientResponse": {
       "text": "Para que tus comprobantes se emitan correctamente según tu configuración tributaria, te sugerimos revisar tu modelo activo en el SII:\n\n1️⃣ Ingresá a sii.cl > Servicios Online > Boleta de ventas y servicios electrónica > Declaración modelo de emisión.\n2️⃣ Verificá cuál opción tenés activa:\n   • Siempre emito Boleta: el voucher de la terminal NO vale como boleta y debés emitirla manualmente.\n   • No emito Boleta cuando recibo pago electrónico: el voucher de Fudo Pagos funciona automáticamente como boleta válida.\n3️⃣ Acompañá esa misma opción desde la configuración de tu cuenta en Fudo.\n\n✅ Si necesitás ayuda para validarlo, contanos qué modelo tenés seleccionado en el SII y lo revisamos juntos.",
@@ -1392,41 +1392,22 @@ export const initialArticles: Article[] = [
     "id": "fudo-flow-037",
     "number": "37",
     "category": "Gestión Común",
-    "readTime": "3 min",
+    "readTime": "2 min",
     "title": "Arqueo de caja con Fudo Pagos",
     "description": "Flujo de arqueo de caja con Fudo Pagos: cómo se completa solo y qué revisar si hay diferencias.",
     "link": "fudo.la/soporte",
     "updatedStatus": "Nuevo",
     "code": "KB-GES-37",
-    "subtitle": "Apertura de arqueo, autocompletado de ventas electrónicas y detección de diferencias.",
-    "verificationSteps": [
-      {
-        "id": "step-1",
-        "text": "1. Abrir: Ventas > Arqueo de caja > Nuevo arqueo. Definir fecha, hora y monto inicial.",
-        "completed": false
-      },
-      {
-        "id": "step-2",
-        "text": "2. Se completa solo: El total de Fudo Pagos \"Según sistema\" se copia automáticamente en \"Según usuario\".",
-        "completed": false
-      },
-      {
-        "id": "step-3",
-        "text": "3. Cerrar: Se cargan los otros medios de pago (efectivo, etc.) y se finaliza el arqueo.",
-        "completed": false
-      },
-      {
-        "id": "step-4",
-        "text": "¿Diferencia en Fudo Pagos? Siempre deberían coincidir: verificar el monto en Fudo Pagos > Cobros.",
-        "completed": false
-      }
-    ],
-    "problemHtml": "<p>Cliente consulta por qué difiere el arqueo de caja o cómo verificar las ventas de Fudo Pagos al cerrar el turno.</p>",
-    "reasonHtml": "<p>El sistema Fudo autocompleta \"Según Usuario\" con el valor de \"Según Sistema\" para agilizar el cuadre. Cualquier diferencia manual suele deberse a cobros ingresados bajo otro medio o cobros no registrados.</p>",
-    "solutionHtml": "<ol><li><strong>1. Abrir:</strong> Ventas &rarr; Arqueo de caja &rarr; Nuevo arqueo. Definir fecha, hora y monto inicial.</li><li><strong>2. Se completa solo:</strong> El total registrado para Fudo Pagos <em>\"Según sistema\"</em> se copia automáticamente en <em>\"Según usuario\"</em>, agilizando el cuadre de caja de los pagos con tarjeta.</li><li><strong>3. Cerrar:</strong> Se cargan manualmente los otros medios de pago (efectivo, Mercado Pago, etc.) y se finaliza el arqueo.</li></ol><div style=\"background:#fffbeb;border:1px solid #fef3c7;padding:12px;border-radius:12px;margin-top:12px;\"><p style=\"color:#92400e;margin:0;\">⚠️ <strong>¿Diferencia en Fudo Pagos?</strong> Siempre deberían coincidir exactamente. Si hay discrepancia, verificar el monto en la pestaña <strong>Fudo Pagos &rarr; Cobros</strong> para revisar las transacciones aprobadas.</p></div>",
+    "badgeLabel": "OPERACIÓN DIARIA",
+    "detailSectionTitle": "CÓMO FUNCIONA Y DETALLE",
+    "subtitle": "Flujo de arqueo de caja con Fudo Pagos: autocompletado y cuadre automático.",
+    "verificationSteps": [],
+    "problemHtml": "",
+    "reasonHtml": "",
+    "solutionHtml": "<p>El arqueo de caja con Fudo Pagos automatiza el cuadre de las ventas electrónicas de la jornada:</p><ol><li><strong>Abrir:</strong> <code>Ventas &rarr; Arqueo de caja &rarr; Nuevo arqueo</code>. Fecha, hora y monto inicial.</li><li><strong>Se completa solo:</strong> El total de Fudo Pagos <em>\"Según sistema\"</em> se copia automáticamente en <em>\"Según usuario\"</em>.</li><li><strong>Cerrar:</strong> Se cargan los otros medios de pago y se finaliza.</li></ol><div style=\"background:#0f172a;color:#ffffff;padding:12px 16px;border-radius:12px;margin-top:14px;display:flex;align-items:center;gap:10px;\"><span style=\"font-size:16px;\">⚠️</span><span style=\"font-size:13px;font-weight:500;color:#ffffff;\"><strong>¿Diferencia en Fudo Pagos?</strong> Siempre deberían coincidir: verificar el monto en <strong>Fudo Pagos &rarr; Cobros</strong>.</span></div>",
     "notesHtml": "<p>Recordar al cliente que la terminal POS no realiza un cierre de lote impreso tradicional: todo el detalle de ventas y cobros se gestiona y audita digitalmente desde Fudo Web.</p>",
     "clientResponse": {
-      "text": "El arqueo de caja con Fudo Pagos está diseñado para cuadrar de forma automática:\n\n1️⃣ Abrir arqueo: ingresá a Ventas > Arqueo de caja > Nuevo arqueo e indicá fecha, hora y monto inicial.\n2️⃣ Se completa solo: el total cobrado por Fudo Pagos \"Según sistema\" se copia automáticamente en \"Según usuario\".\n3️⃣ Cerrar: completá los importes de los demás medios de pago (como efectivo) y finalizá el arqueo.\n\n⚠️ ¿Notás diferencias en Fudo Pagos? Siempre deberían coincidir. Podés corroborar el total real ingresando a Fudo Pagos > Cobros y filtrando por la fecha del turno.",
+      "text": "El arqueo de caja con Fudo Pagos funciona de forma automática al cerrar la jornada:\n\n1️⃣ Abrir: ingresá a Ventas > Arqueo de caja > Nuevo arqueo e indicá fecha, hora y monto inicial.\n2️⃣ Se completa solo: el total cobrado por Fudo Pagos \"Según sistema\" se copia automáticamente en \"Según usuario\".\n3️⃣ Cerrar: cargá los importes de los demás medios de pago (como efectivo) y finalizá el arqueo.\n\n⚠️ ¿Notás diferencias en Fudo Pagos? Siempre deberían coincidir. Podés corroborar el total real en Fudo Pagos > Cobros filtrando por la fecha del turno.",
       "isHomologated": true
     },
     "externalLink": {
@@ -1487,53 +1468,11 @@ export const initialArticles: Article[] = [
     "number": "39",
     "category": "Error Dispositivo",
     "readTime": "3 min",
-    "title": "Escalamiento crítico de terminal y canal Slack #contact-fudopagos",
-    "description": "Protocolo de descarte técnico final y plantilla obligatoria para escalar incidencias no resueltas a #contact-fudopagos.",
-    "link": "fudo.la/soporte",
-    "updatedStatus": "Nuevo",
-    "code": "KB-ERR-39",
-    "subtitle": "Última prueba general de batería, datos obligatorios del reporte y derivación en días hábiles.",
-    "verificationSteps": [
-      {
-        "id": "step-1",
-        "text": "Ejecutar última prueba general: apagar terminal, retirar batería 20 min, colocar tapa, encender y reintentar.",
-        "completed": false
-      },
-      {
-        "id": "step-2",
-        "text": "Verificar si la app de Fudo está actualizada y alternar conectividad entre Wi-Fi y datos móviles (chip).",
-        "completed": false
-      },
-      {
-        "id": "step-3",
-        "text": "Si no resuelve, redactar mensaje para Slack #contact-fudopagos con la plantilla obligatoria de 6 campos.",
-        "completed": false
-      }
-    ],
-    "problemHtml": "<p>Incidencia persistente de terminal (cobros, sistema, conectividad) que no se soluciona con los pasos de diagnóstico habituales.</p>",
-    "reasonHtml": "<p>Falla profunda de firmware, hardware o conectividad que requiere intervención de Desarrollo, Pagos o soporte avanzado de Fudo Pagos.</p>",
-    "solutionHtml": "<p><strong>1. Última prueba general obligatoria:</strong></p><p>Apagar &rarr; retirar batería &rarr; esperar <strong>20 minutos</strong> &rarr; colocar batería/tapa &rarr; encender &rarr; probar nuevamente.</p><p><strong>2. Si no se soluciona, derivar a Soporte Fudo Pagos mediante folio adjuntando:</strong></p><ul><li>Todo lo que ya se probó con el cliente.</li><li>Fotos y videos enviados por el comercio.</li><li>Datos de contacto completos del cliente.</li></ul><p><strong>3. Escalamiento en Slack (canal <code>#contact-fudopagos</code>):</strong></p><p>Para días hábiles donde soporte Fudo Pagos requiere asistencia de equipos de Desarrollo, Payments o Comercial, enviar mensaje con la siguiente plantilla <em>obligatoria</em>:</p><ul><li><strong>ID de Dash</strong> del comercio.</li><li><strong>Número de serie</strong> de la terminal.</li><li><strong>Fecha y hora exacta</strong> del incidente.</li><li><strong>Conectividad utilizada:</strong> WiFi o chip (especificar operador: Entel o Claro).</li><li><strong>Contexto del error:</strong> cuándo ocurre, si es aleatorio o sucede en mesas, mostrador o delivery.</li><li><strong>Evidencia:</strong> fotos o videos adjuntos del problema.</li></ul>",
-    "notesHtml": "<p>Utilizar principalmente en días hábiles cuando soporte técnico N1 ya agotó pruebas de hardware y requiere escalamiento directo a los equipos regionales de producto o adquirente.</p>",
-    "clientResponse": {
-      "text": "",
-      "isHomologated": false
-    },
-    "externalLink": {
-      "title": "Base de Conocimiento Fudo",
-      "url": "https://soporte.fudo.la",
-      "code": "FUDO-KB"
-    }
-  },
-  {
-    "id": "fudo-flow-040",
-    "number": "40",
-    "category": "Error Dispositivo",
-    "readTime": "3 min",
     "title": "Diagnóstico inicial de terminal (No enciende, No imprime, Errores)",
     "description": "Guía unificada de diagnóstico rápido para los 3 problemas técnicos más comunes antes de escalar.",
     "link": "fudo.la/soporte",
     "updatedStatus": "Nuevo",
-    "code": "KB-ERR-40",
+    "code": "KB-ERR-39",
     "subtitle": "Pasos iniciales de descarte para encendido, impresión y errores de cobro/sistema.",
     "verificationSteps": [
       {
@@ -1560,7 +1499,7 @@ export const initialArticles: Article[] = [
     "problemHtml": "<p>Comercio reporta fallo técnico en su terminal (no enciende, no imprime o da error de transacción/sistema).</p>",
     "reasonHtml": "<p>Bloqueo de energía, batería baja, configuración de contraste de cabezal o desincronización de red/sesión.</p>",
     "solutionHtml": "<p><strong>Matriz de Diagnóstico Inicial:</strong></p><ul><li><strong>1. No enciende:</strong><ul><li>Retirar batería <strong>20 min</strong>.</li><li>Cargador original hasta <strong>40% mínimo</strong>.</li><li>Si no carga: solicitar <strong>video de la conexión</strong>.</li><li>Si sigue: dejar conectada <strong>más de 1 día</strong>.</li></ul></li><li><strong>2. No imprime:</strong><ul><li>Batería <strong>mayor a 10%</strong>.</li><li>Rollo con el papel colocado <strong>hacia adelante</strong>.</li><li>Reiniciar o calibrar: 🇨🇱 CL: PRINTER &rarr; Print Sample / 🇦🇷🇲🇽 AR-MX: HardwareTest &rarr; Printer Test.</li></ul></li><li><strong>3. Errores o cobros:</strong><ul><li>Reiniciar la terminal.</li><li>Verificar que la app esté en la <strong>última versión</strong>.</li><li>Alternar entre <strong>WiFi y datos móviles (chip)</strong>.</li><li>Revisar permisos del usuario en Fudo.</li></ul></li></ul><div style=\"background:#0f172a;color:#fff;padding:14px;border-radius:12px;margin-top:14px;\"><p style=\"color:#38bdf8;font-weight:bold;margin:0 0 4px 0;\">ÚLTIMA PRUEBA GENERAL</p><p style=\"margin:0;font-size:13px;\">Apagar &rarr; retirar batería &rarr; esperar <strong>20 min</strong> &rarr; colocar batería y tapa &rarr; encender &rarr; probar.</p></div>",
-    "notesHtml": "<p>Si ninguna de las pruebas iniciales ni la prueba general de 20 minutos resuelve el problema, proceder a la guía #39 (escalamiento completo con plantilla).</p>",
+    "notesHtml": "<p>Si ninguna de las pruebas iniciales ni la prueba general de 20 minutos resuelve el problema, utilizar el botón <strong>\"Pauta de Escalamiento\"</strong> en la barra superior para registrar y derivar el caso con la plantilla a Folio o Slack #contact-fudopagos.</p>",
     "clientResponse": {
       "text": "Para diagnosticar y resolver el inconveniente con tu terminal, te sugerimos realizar estas pruebas rápidas:\n\n🔌 Si no enciende o no carga:\n1️⃣ Apagala y retirá la batería durante 20 minutos.\n2️⃣ Conectala con su cargador original y dejala cargar hasta al menos el 40% antes de encenderla.\n\n🖨️ Si no imprime:\n1️⃣ Verificá que la batería tenga más del 10% de carga.\n2️⃣ Corroborá que el rollo esté colocado con el papel saliendo hacia adelante.\n3️⃣ Reiniciá la terminal o ejecutá la prueba de impresión desde ajustes.\n\n💳 Si arroja error al cobrar:\n1️⃣ Reiniciá el equipo y verificá tener la app actualizada a la última versión.\n2️⃣ Probá alternando entre Wi-Fi y datos móviles (chip).\n\n🔄 Prueba general: apagá la terminal, retirá la batería 20 minutos, volvé a colocarla y probá nuevamente.\n\n✅ Si continúa la falla, avisanos para revisarlo juntos.",
       "isHomologated": true

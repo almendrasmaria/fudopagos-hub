@@ -64,7 +64,7 @@ export function ProtocolView({ article, onBackMobile }: ProtocolViewProps) {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
               <span className="text-[11px] font-bold tracking-wider text-slate-700 uppercase">
-                PROTOCOLO DE RESPUESTA • {article.category}
+                {article.badgeLabel || (steps.length > 0 ? "PROTOCOLO DE RESPUESTA" : "GUÍA OPERATIVA")} • {article.category}
               </span>
             </div>
             <span className="text-xs font-mono text-slate-400">
@@ -114,7 +114,7 @@ export function ProtocolView({ article, onBackMobile }: ProtocolViewProps) {
           </div>
         )}
 
-        {/* Section 2: Guía / Procedimiento del Agente */}
+        {/* Section 2: Guía / Procedimiento del Agente o Funcionamiento */}
         {(article.solutionHtml || article.reasonHtml) && (
           <div className="w-full bg-white rounded-2xl border border-slate-200/90 p-5 md:p-6 shadow-2xs">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100/80">
@@ -123,7 +123,7 @@ export function ProtocolView({ article, onBackMobile }: ProtocolViewProps) {
                   {steps.length > 0 ? "2" : "1"}
                 </span>
                 <h2 className="text-xs font-bold text-slate-900 tracking-wider uppercase">
-                  PROCEDIMIENTO Y DETALLE
+                  {article.detailSectionTitle || (steps.length > 0 ? "PROCEDIMIENTO Y DETALLE" : "CÓMO FUNCIONA Y DETALLE")}
                 </h2>
               </div>
             </div>
